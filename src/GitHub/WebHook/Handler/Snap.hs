@@ -7,6 +7,8 @@ import           Data.ByteString
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.CaseInsensitive as CI
 
+import           Data.UUID
+
 import           Snap.Core
 
 import           GitHub.Types
@@ -14,7 +16,7 @@ import           GitHub.WebHook.Handler
 
 
 
-webhookHandler :: ByteString -> Maybe String -> (Either Error Event -> Snap ()) -> Snap ()
+webhookHandler :: ByteString -> Maybe String -> (Either Error (UUID, Event) -> Snap ()) -> Snap ()
 webhookHandler hookPath mbSecretKey m =
     path hookPath $ method POST $ runHandler handler
   where
