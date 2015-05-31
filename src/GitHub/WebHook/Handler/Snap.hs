@@ -3,6 +3,8 @@ module GitHub.WebHook.Handler.Snap
   ) where
 
 
+import           Control.Applicative
+
 import           Data.ByteString
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.CaseInsensitive as CI
@@ -13,6 +15,8 @@ import           Snap.Core
 
 import           GitHub.Types
 import           GitHub.WebHook.Handler
+
+import           Prelude
 
 
 
