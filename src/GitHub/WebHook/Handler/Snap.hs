@@ -20,7 +20,7 @@ import           Prelude
 
 
 
-webhookHandler :: ByteString -> Maybe String -> (Either Error (UUID, Event) -> Snap ()) -> Snap ()
+webhookHandler :: ByteString -> Maybe String -> (Either Error (UUID, Payload) -> Snap ()) -> Snap ()
 webhookHandler hookPath mbSecretKey m =
     path hookPath $ method POST $ runHandler handler
   where

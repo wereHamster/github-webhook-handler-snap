@@ -33,7 +33,7 @@ library
    , case-insensitive
    , snap-core
    , uuid
-   , github-types
+   , github-types >=0.2 && <1
    , github-webhook-handler >=0.0.3 && <1
 
   exposed-modules:
