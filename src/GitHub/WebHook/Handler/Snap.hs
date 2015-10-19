@@ -21,12 +21,12 @@ import           Prelude
 
 
 
-webhookHandler :: ByteString -> Maybe String -> (Either Error (UUID, Payload) -> Snap ()) -> Snap ()
-webhookHandler hookPath mbSecretKey m =
+webhookHandler :: ByteString -> [String] -> (Either Error (UUID, Payload) -> Snap ()) -> Snap ()
+webhookHandler hookPath secretKeys m =
     path hookPath $ method POST $ runHandler handler
   where
     handler = Handler
-        { hSecretKey = mbSecretKey
+        { hSecretKeys = secretKeys
         , hBody = fmap LBS.toStrict $ readRequestBody (100 * 1000)
         , hHeader = \name -> do
             hdrs <- headers <$> getRequest
