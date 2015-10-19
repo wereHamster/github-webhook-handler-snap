@@ -16,7 +16,7 @@ main = do
         -- Add a webhook to your organization or repository and configure it
         -- to send the payload to path "/webhook" and use the secret
         -- "secret^key".
-        webhookHandler "/webhook" (Just "secret^key") handleEvent
+        webhookHandler "/webhook" ["secret^key"] handleEvent
 
 handleEvent :: Either Error (UUID, Event) -> Snap ()
 handleEvent (Left e) = do
