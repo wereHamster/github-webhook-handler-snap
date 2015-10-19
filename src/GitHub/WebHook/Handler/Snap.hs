@@ -1,5 +1,6 @@
 module GitHub.WebHook.Handler.Snap
-  ( webhookHandler
+  ( module GitHub.WebHook.Handler
+  , webhookHandler
   ) where
 
 
