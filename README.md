@@ -6,7 +6,7 @@ WebHook Handler][github-webhook-handler].
 
 
 ```haskell
-import GitHub.Types                (Event)
+import GitHub.Types                (Payload)
 import GitHub.WebHook.Handler      (Error)
 import GitHub.WebHook.Handler.Snap (webhookHandler)
 
@@ -18,18 +18,18 @@ main = do
         -- "secret^key".
         webhookHandler "/webhook" ["secret^key"] handleEvent
 
-handleEvent :: Either Error (UUID, Event) -> Snap ()
+handleEvent :: Either Error (UUID, Payload) -> Snap ()
 handleEvent (Left e) = do
     -- Send a 4xx or 5xx response.
     return ()
 
-handleEvent (Right (uuid, event)) =
-    case event of
-        (CommitCommentEventType e) -> do
+handleEvent (Right (uuid, payload)) =
+    case payload of
+        (CommitCommentEventPayload e) -> do
             -- Somebody added a comment to a commit.
             return ()
 
-        (DeploymentEventType e) -> do
+        (DeploymentEventPayload e) -> do
             -- Somebody created a deployment.
             return ()
 
