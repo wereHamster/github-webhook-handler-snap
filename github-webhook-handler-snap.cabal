@@ -34,7 +34,7 @@ library
    , snap-core
    , uuid
    , github-types >=0.2 && <1
-   , github-webhook-handler >=0.0.5 && <1
+   , github-webhook-handler >=0.0.6 && <1
 
   exposed-modules:
      GitHub.WebHook.Handler.Snap

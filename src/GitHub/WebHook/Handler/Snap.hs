@@ -21,8 +21,8 @@ import           Prelude
 
 
 
-webhookHandler :: ByteString -> [String] -> (Either Error (UUID, Payload) -> Snap ()) -> Snap ()
-webhookHandler hookPath secretKeys m =
+webhookHandler :: ByteString -> [String] -> Snap (Either Error (UUID, Payload))
+webhookHandler hookPath secretKeys =
     path hookPath $ method POST $ runHandler handler
   where
     handler = Handler
@@ -31,5 +31,4 @@ webhookHandler hookPath secretKeys m =
         , hHeader = \name -> do
             hdrs <- headers <$> getRequest
             return $ getHeader (CI.mk name) hdrs
-        , hAction = \res -> m res >> getResponse >>= finishWith
         }
