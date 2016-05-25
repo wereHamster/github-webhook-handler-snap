@@ -28,7 +28,7 @@ library
   ghc-options:         -Wall
 
   build-depends:
-     base >=4 && <4.9
+     base >=4 && <4.10
    , bytestring
    , case-insensitive
    , snap-core
