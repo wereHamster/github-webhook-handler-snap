@@ -1,5 +1,5 @@
 name:                github-webhook-handler-snap
-version:             0.0.6
+version:             0.0.7
 
 synopsis:            GitHub WebHook Handler implementation for Snap
 description:
@@ -34,7 +34,7 @@ library
    , snap-core
    , uuid
    , github-types >=0.2 && <1
-   , github-webhook-handler >=0.0.6 && <1
+   , github-webhook-handler >=0.0.7 && <1
 
   exposed-modules:
      GitHub.WebHook.Handler.Snap
